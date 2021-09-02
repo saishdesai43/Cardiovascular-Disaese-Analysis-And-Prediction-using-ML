@@ -1,0 +1,21 @@
+<html>
+   {% load static %}
+    <head>
+       
+  
+  <script src="{% static 'js/myjs.js' %}"></script>
+    </head>
+    <body>
+    <h1>Login Page</h1>
+    <form action="/logincheck/" method="POST" onsubmit="check()">
+        {% csrf_token %}
+        Name :<input type="text" name="username" id="uname">
+        <br>
+        Password :<input type="password" name="pwd" id="pwd">
+        <br>
+        <input type="submit" value="Show" >
+    </form>
+
+    <img src="{% static 'images/python logo.jpg'%}">
+</body>
+</html>

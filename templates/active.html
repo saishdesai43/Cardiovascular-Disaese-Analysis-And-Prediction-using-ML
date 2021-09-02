@@ -1,0 +1,302 @@
+<html>
+   {% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    
+    
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+
+<style>
+
+    
+
+   h1{
+      text-align: center;
+      color: darkgoldenrod;
+   }
+   
+   #ActiveY_CN{
+    padding-left: 0px;
+    margin-left: 10px;
+ }
+
+ #NActiveN_CN{
+   padding-left: 0px;
+   margin-left: 20px;
+ }
+
+   
+  
+
+</style>
+<body>
+<div class="title">
+   <h1>Based on Physical Activities</h1>
+   
+</div>
+<div class="row">
+
+    <div class="column3">
+    <b>1 . Physically active but cardio infected</b>   
+    <canvas id="ActiveY_CY"></canvas>
+    </div>
+
+    <div class="column4">
+    <b>3 . Physically not active and cardio infected</b>   
+    <canvas id="NActiveY_CY"></canvas>
+    
+    </div>
+ 
+</div>
+
+<div class="row">
+    
+    <div class="column1">
+     <b>2 . Physically active and are not cardio infected</b>   
+    <canvas id="ActiveY_CN"></canvas>
+    </div>
+
+    <div class="column2">
+      <b>4 . Physically not active and are not cardio infected</b>   
+    <canvas id="NActiveN_CN"></canvas>
+    </div>
+
+</div>
+</body>
+
+
+<script>
+var ctx = document.getElementById('ActiveY_CY');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        //labels:[39,40,41,42],
+        labels:{{active_y_age|safe}},
+        datasets: [{
+            'label': 'ActiveY_CY',
+            backgroundColor: 'rgba(0,19,77,0)',
+            borderWidth: 1,
+            borderColor: 'rgb(0,19,77)',
+            //data:[100,90,120,560]
+            data: {{active_y_cardio|safe}}
+        }     
+        ]
+    },
+
+    // Configuration options go here
+    options: {
+       scales: { 
+            xAxes: [{
+               gridLines: {
+                  display: false
+               },
+               scaleLabel:{
+                    display:true,
+                    labelString: 'Age'
+                }
+            }],
+            yAxes: [{
+               gridLines: {
+                  display: false
+               },
+               scaleLabel:{
+                    display:true,
+                    labelString: 'Active but cardio Infected'
+                }
+            }]
+       },
+       animation :{
+         duration : 4000,
+         easing : 'easeInOutBounce'  
+       }
+       
+    }
+});
+
+
+
+</script>
+
+
+
+
+
+<script>
+    var ctx = document.getElementById('NActiveY_CY');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            //labels:[39,40,41,42],
+            labels:{{n_active_y_age|safe}},
+            datasets: [{
+                'label': 'NActiveY_CY',
+                backgroundColor: 'rgba(51,51,51,0)',
+                borderWidth: 1,
+                borderColor: 'rgb(51,51,51)',
+                //data:[100,90,120,560]
+                data: {{n_active_y_cardio|safe}}
+            }     
+            ]
+        },
+    
+        // Configuration options go here
+        options: {
+           scales: { 
+                xAxes: [{
+                   gridLines: {
+                      display: false
+                   },
+                   scaleLabel:{
+                    display:true,
+                    labelString: 'Age'
+                }
+                }],
+                yAxes: [{
+                   gridLines: {
+                      display: false
+                   },
+                   scaleLabel:{
+                    display:true,
+                    labelString: 'Not active and cardio infected'
+                }
+                }]
+           },
+           animation :{
+             duration : 4000,
+             easing : 'easeInOutBounce'  
+           }
+           
+        }
+    });
+    
+    
+    
+    </script>
+    
+
+
+<script>
+    var ctx = document.getElementById('ActiveY_CN');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            //labels:[39,40,41,42],
+            labels:{{active_n_age|safe}},
+            datasets: [{
+                'label': 'ActiveY_CN',
+                backgroundColor: 'rgba(51,51,51,0)',
+                borderWidth: 1,
+                borderColor: 'rgb(51,51,51)',
+                //data:[100,90,120,560]
+                data: {{active_n_cardio|safe}}
+            }     
+            ]
+        },
+    
+        // Configuration options go here
+        options: {
+           scales: { 
+                xAxes: [{
+                   gridLines: {
+                      display: false
+                   },
+                   scaleLabel:{
+                    display:true,
+                    labelString: 'Age'
+                }
+                }],
+                yAxes: [{
+                   gridLines: {
+                      display: false
+                   },
+                   scaleLabel:{
+                    display:true,
+                    labelString: 'Active and are cardio infected'
+                }
+                }]
+           },
+           animation :{
+             duration : 4000,
+             easing : 'easeInOutBounce'  
+           }
+           
+        }
+    });
+    
+    
+    
+    </script>
+    
+
+
+<script>
+        var ctx = document.getElementById('NActiveN_CN');
+            var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+        
+            // The data for our dataset
+            data: {
+                //labels:[39,40,41,42],
+                labels:{{n_active_n_age|safe}},
+                datasets: [{
+                    'label': 'NActiveN_CN',
+                    backgroundColor: 'rgba(0,19,77,0)',
+                    borderWidth: 1,
+                    borderColor: 'rgb(0,19,77)',
+                    //data:[100,90,120,560]
+                    data: {{n_active_n_cardio|safe}}
+                }     
+                ]
+            },
+        
+            // Configuration options go here
+            options: {
+               scales: { 
+                    xAxes: [{
+                       gridLines: {
+                          display: false
+                       },
+                       scaleLabel:{
+                    display:true,
+                    labelString: 'Age'
+                }
+                    }],
+                    yAxes: [{
+                       gridLines: {
+                          display: false
+                       },
+                       scaleLabel:{
+                    display:true,
+                    labelString: 'Not physically active and are not cardio infected'
+                }
+                    }]
+               },
+               animation :{
+                 duration : 4000,
+                 easing : 'easeInOutBounce'  
+               }
+               
+            }
+        });
+        
+        
+        
+</script>
+        
+</html>

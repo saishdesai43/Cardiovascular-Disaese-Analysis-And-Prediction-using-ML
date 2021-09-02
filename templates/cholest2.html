@@ -1,0 +1,373 @@
+<html>
+  {% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    
+    
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <style>
+      .new{
+        text-align: center;
+        font-style: italic;
+        color: rgb(11, 92, 146) ;
+      }
+    </style>
+
+
+    <body>
+      <div class="new"><h1>Cardio Infection based on <b>'Variations of Cholestrol Level '</b></h1></div>
+        <div class="row">
+
+            <div class="column">
+                <canvas id="Nchl1_y"></canvas>
+            </div>
+
+            <div class="column">
+              <canvas id="Nchl1_n"></canvas>
+            </div>
+          </div>    
+          
+          <div class="row" id="row2">
+
+            <div class="column">
+                <canvas id="Nchl2_y"></canvas>
+            </div>
+
+            <div class="column">
+              <canvas id="Nchl2_n"></canvas>
+            </div>
+          </div>    
+
+          <div class="row" id="row3">
+
+            <div class="column">
+                <canvas id="Nchl3_y"></canvas>
+            </div>
+
+            <div class="column">
+              <canvas id="Nchl3_n"></canvas>
+            </div>
+          </div> 
+    </body>
+
+    <script>
+        var ctx = document.getElementById('Nchl1_y');
+            var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+        
+            // The data for our dataset
+            data: {
+                //labels:[39,40,41,42],
+                labels:{{Nchl1_y_age|safe}},
+                datasets: [{
+                    'label': 'Nchl1_y',
+                    backgroundColor: 'rgba(0, 153, 255,1)',
+                    borderWidth: 1,
+                    borderColor: 'rgb(51,51,51)',
+                    //data:[100,90,120,560]
+                    data: {{Nchl1_y_cardio|safe}}
+                }     
+                ]
+            },
+        
+            // Configuration options go here
+            options: {
+               scales: { 
+                    xAxes: [{
+                      scaleLabel:{
+                      display:true,
+                      labelString: 'Age'},
+                       gridLines: {
+                          display: false
+                       }
+                    }],
+                    yAxes: [{
+                      scaleLabel:{
+                      display:true,
+                      labelString: 'No Cholestrol Level and cardio infected'},
+                       gridLines: {
+                          display: false
+                       }
+                    }]
+               },
+               animation :{
+                 duration : 4000,
+                 easing : 'easeInOutBounce'  
+               }
+               
+            }
+        });
+        
+        
+        
+        </script>
+    
+    <script>
+      var ctx = document.getElementById('Nchl1_n');
+          var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'bar',
+      
+          // The data for our dataset
+          data: {
+              //labels:[39,40,41,42],
+              labels:{{Nchl1_n_age|safe}},
+              datasets: [{
+                  'label': 'Nchl1_n',
+                  backgroundColor: 'rgba(0, 153, 255,1)',
+                  borderWidth: 1,
+                  borderColor: 'rgb(51,51,51)',
+                  //data:[100,90,120,560]
+                  data: {{Nchl1_n_cardio|safe}}
+              }     
+              ]
+          },
+      
+          // Configuration options go here
+          options: {
+             scales: { 
+                  xAxes: [{
+                    scaleLabel:{
+                      display:true,
+                      labelString: 'Age'},
+                     gridLines: {
+                        display: false
+                     }
+                  }],
+                  yAxes: [{
+                    scaleLabel:{
+                      display:true,
+                      labelString: 'No Cholestrol Level  and not cardio infected'},
+                     gridLines: {
+                        display: false
+                     }
+                  }]
+             },
+             animation :{
+               duration : 4000,
+               easing : 'easeInOutBounce'  
+             }
+             
+          }
+      });
+      
+      
+      
+      </script>
+
+  <script>
+    var ctx = document.getElementById('Nchl2_y');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+    
+        // The data for our dataset
+        data: {
+            //labels:[39,40,41,42],
+            labels:{{Nchl2_y_age|safe}},
+            datasets: [{
+                'label': 'Nchl2_y',
+                backgroundColor: 'rgba(0, 138, 230,1)',
+                borderWidth: 1,
+                borderColor: 'rgb(51,51,51)',
+                //data:[100,90,120,560]
+                data: {{Nchl2_y_cardio|safe}}
+            }     
+            ]
+        },
+    
+        // Configuration options go here
+        options: {
+          scales: { 
+                xAxes: [{
+                  scaleLabel:{
+                      display:true,
+                      labelString: 'Age'},
+                  gridLines: {
+                      display: false
+                  }
+                }],
+                yAxes: [{
+                  scaleLabel:{
+                      display:true,
+                      labelString: 'No Cholestrol Level and cardio infected'},
+                  gridLines: {
+                      display: false
+                  }
+                }]
+          },
+          animation :{
+            duration : 4000,
+            easing : 'easeInOutBounce'  
+          }
+          
+        }
+    });
+    
+    </script>
+
+
+
+  <script>
+    var ctx = document.getElementById('Nchl2_n');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+    
+        // The data for our dataset
+        data: {
+            //labels:[39,40,41,42],
+            labels:{{Nchl2_n_age|safe}},
+            datasets: [{
+                'label': 'Nchl2_n',
+                backgroundColor: 'rgba(0, 138, 230,1)',
+                borderWidth: 1,
+                borderColor: 'rgb(51,51,51)',
+                //data:[100,90,120,560]
+                data: {{Nchl2_n_cardio|safe}}
+            }     
+            ]
+        },
+    
+        // Configuration options go here
+        options: {
+          scales: { 
+                xAxes: [{
+                  scaleLabel:{
+                      display:true,
+                      labelString: 'Age'},
+                  gridLines: {
+                      display: false
+                  }
+                }],
+                yAxes: [{
+                  scaleLabel:{
+                      display:true,
+                      labelString: 'No Cholestrol Level  and not cardio infected'},
+                  gridLines: {
+                      display: false
+                  }
+                }]
+          },
+          animation :{
+            duration : 4000,
+            easing : 'easeInOutBounce'  
+          }
+          
+        }
+    });
+
+    </script>
+
+<script>
+  var ctx = document.getElementById('Nchl3_y');
+      var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'bar',
+  
+      // The data for our dataset
+      data: {
+          //labels:[39,40,41,42],
+          labels:{{Nchl3_y_age|safe}},
+          datasets: [{
+              'label': 'Nchl3_y',
+              backgroundColor: 'rgba(0,122,204,1)',
+              borderWidth: 1,
+              borderColor: 'rgb(51,51,51)',
+              //data:[100,90,120,560]
+              data: {{Nchl3_y_cardio|safe}}
+          }     
+          ]
+      },
+  
+      // Configuration options go here
+      options: {
+        scales: { 
+              xAxes: [{
+                scaleLabel:{
+                      display:true,
+                      labelString: 'Age'},
+                gridLines: {
+                    display: false
+                }
+              }],
+              yAxes: [{
+                scaleLabel:{
+                      display:true,
+                      labelString: 'No Cholestrol Level  and cardio infected'},
+                gridLines: {
+                    display: false
+                }
+              }]
+        },
+        animation :{
+          duration : 4000,
+          easing : 'easeInOutBounce'  
+        }
+        
+      }
+  });
+
+  </script>
+
+
+<script>
+  var ctx = document.getElementById('Nchl3_n');
+      var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'bar',
+  
+      // The data for our dataset
+      data: {
+          //labels:[39,40,41,42],
+          labels:{{Nchl3_n_age|safe}},
+          datasets: [{
+              'label': 'chl3_n',
+              backgroundColor: 'rgba(0,122,204,1)',
+              borderWidth: 1,
+              borderColor: 'rgb(51,51,51)',
+              //data:[100,90,120,560]
+              data: {{Nchl3_n_cardio|safe}}
+          }     
+          ]
+      },
+  
+      // Configuration options go here
+      options: {
+        scales: { 
+              xAxes: [{
+                scaleLabel:{
+                      display:true,
+                      labelString: 'Age'},
+                gridLines: {
+                    display: false
+                }
+              }],
+              yAxes: [{
+                scaleLabel:{
+                      display:true,
+                      labelString: 'No Cholestrol Level  and not cardio infected'},
+                gridLines: {
+                    display: false
+                }
+              }]
+        },
+        animation :{
+          duration : 4000,
+          easing : 'easeInOutBounce'  
+        }
+        
+      }
+  });
+
+  </script>
+
+  </html>

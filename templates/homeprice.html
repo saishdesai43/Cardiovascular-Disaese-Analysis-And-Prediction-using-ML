@@ -1,0 +1,106 @@
+<html>
+   {% load static %}
+    <head>
+       
+  <style>
+  body{
+    background-image: url("https://www.thoughtco.com/thmb/rJ_oZzSWqIX4VfldjgU_xYSb49A=/1500x1003/filters:no_upscale():max_bytes(150000):strip_icc()/cardiovascular_system-57f6d56a3df78c690f77c7c7.jpg");
+  }  
+
+
+  input[type=number], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: blue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-left: 400px;
+  margin-right: 400px;
+  opacity: 0.7;
+}
+
+button{
+  align-content: center;
+}
+
+h1{
+  color: beige;
+  text-align: center;
+}
+
+
+
+  </style>
+  <script src="{% static 'js/myjs.js' %}"></script>
+    </head>
+    <body>
+    
+    <h1>Cardio Infection Prediction </h1>
+    <br><br>
+
+    <div>
+    <form action="/predictPrice/" method="POST" >
+        {% csrf_token %}
+        <label for="age">Enter Age :</label>
+        <input type="number" name="age" id="age" placeholder="Your age.."><br><br>
+        Enter cholesterol level :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="cholesterol" name="cholesterol">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          
+        </select><br><br>
+        
+        Enter Glucose Level :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="gluc" name="gluc">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          
+        </select><br><br>
+       
+        Enter weight :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="weight" id="weight"><br><br>
+        Enter High BP :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="ap_hi" id="ap_hi"><br><br>
+        Enter Low BP :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="ap_lo" id="ap_lo"><br><br>
+        Enter smoke habit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="smoke" name="smoke">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          </select><br><br>
+        <br>
+        <input type="submit" value="Predict" >
+    </form>
+ 
+  <span><b>Result: {{myname}}</b></span>
+  <br><br>
+  <button onclick="goBack()"><b>Go to Previous Page</b></button>
+  
+</div>  
+</body>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>  
+</html>
